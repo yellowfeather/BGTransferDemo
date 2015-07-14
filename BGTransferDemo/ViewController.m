@@ -57,7 +57,7 @@
     self.tblFiles.scrollEnabled = NO;
     
     
-    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration backgroundSessionConfiguration:@"com.BGTransferDemo"];
+    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.BGTransferDemo"];
     sessionConfiguration.HTTPMaximumConnectionsPerHost = 5;
     
     
@@ -176,13 +176,13 @@
 
 - (IBAction)startOrPauseDownloadingSingleFile:(id)sender {
     // Check if the parent view of the sender button is a table view cell.
-    if ([[[[sender superview] superview] superview] isKindOfClass:[UITableViewCell class]]) {
-        // Get the container cell.
-        UITableViewCell *containerCell = (UITableViewCell *)[[[sender superview] superview] superview];
-        
+    
+    // Get the container cell.
+    UITableViewCell *containerCell = [self findUITableViewCell:sender];
+    if (containerCell) {
         // Get the row (index) of the cell. We'll keep the index path as well, we'll need it later.
         NSIndexPath *cellIndexPath = [self.tblFiles indexPathForCell:containerCell];
-        int cellIndex = cellIndexPath.row;
+        NSInteger cellIndex = cellIndexPath.row;
         
         // Get the FileDownloadInfo object being at the cellIndex position of the array.
         FileDownloadInfo *fdi = [self.arrFileDownloadData objectAtIndex:cellIndex];
@@ -232,13 +232,12 @@
 
 
 - (IBAction)stopDownloading:(id)sender {
-    if ([[[[sender superview] superview] superview] isKindOfClass:[UITableViewCell class]]) {
-        // Get the container cell.
-        UITableViewCell *containerCell = (UITableViewCell *)[[[sender superview] superview] superview];
-        
+    // Get the container cell.
+    UITableViewCell *containerCell = [self findUITableViewCell:sender];
+    if (containerCell) {
         // Get the row (index) of the cell. We'll keep the index path as well, we'll need it later.
         NSIndexPath *cellIndexPath = [self.tblFiles indexPathForCell:containerCell];
-        int cellIndex = cellIndexPath.row;
+        NSInteger cellIndex = cellIndexPath.row;
         
         // Get the FileDownloadInfo object being at the cellIndex position of the array.
         FileDownloadInfo *fdi = [self.arrFileDownloadData objectAtIndex:cellIndex];
@@ -450,5 +449,20 @@
         }
     }];
 }
+
+
+-(UITableViewCell*)findUITableViewCell:(id)sender{
+    id superView = [sender superview];
+    UITableViewCell *containerCell;
+    while (YES) {
+        if ([superView isKindOfClass:[UITableViewCell class]]) {
+            containerCell = superView;
+            break;
+        }else
+            superView = [superView superview];
+    }
+    return containerCell;
+}
+
 
 @end
