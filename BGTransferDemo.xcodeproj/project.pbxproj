@@ -21,6 +21,7 @@
 		C009F97D18E2065E00EDB1AF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C009F95F18E2065E00EDB1AF /* UIKit.framework */; };
 		C009F98518E2065E00EDB1AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C009F98318E2065E00EDB1AF /* InfoPlist.strings */; };
 		C009F98718E2065E00EDB1AF /* BGTransferDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C009F98618E2065E00EDB1AF /* BGTransferDemoTests.m */; };
+		C009F99218E2095A00EDB1AF /* FileDownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C009F99118E2095A00EDB1AF /* FileDownloadInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		C009F98218E2065E00EDB1AF /* BGTransferDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BGTransferDemoTests-Info.plist"; sourceTree = "<group>"; };
 		C009F98418E2065E00EDB1AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C009F98618E2065E00EDB1AF /* BGTransferDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGTransferDemoTests.m; sourceTree = "<group>"; };
+		C009F99018E2095A00EDB1AF /* FileDownloadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloadInfo.h; sourceTree = "<group>"; };
+		C009F99118E2095A00EDB1AF /* FileDownloadInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloadInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				C009F96D18E2065E00EDB1AF /* Main.storyboard */,
 				C009F97018E2065E00EDB1AF /* ViewController.h */,
 				C009F97118E2065E00EDB1AF /* ViewController.m */,
+				C009F99018E2095A00EDB1AF /* FileDownloadInfo.h */,
+				C009F99118E2095A00EDB1AF /* FileDownloadInfo.m */,
 				C009F97318E2065E00EDB1AF /* Images.xcassets */,
 				C009F96218E2065E00EDB1AF /* Supporting Files */,
 			);
@@ -199,6 +204,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Appcoda;
 				TargetAttributes = {
+					C009F95718E2065E00EDB1AF = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					C009F97818E2065E00EDB1AF = {
 						TestTargetID = C009F95718E2065E00EDB1AF;
 					};
@@ -250,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C009F97218E2065E00EDB1AF /* ViewController.m in Sources */,
+				C009F99218E2095A00EDB1AF /* FileDownloadInfo.m in Sources */,
 				C009F96C18E2065E00EDB1AF /* AppDelegate.m in Sources */,
 				C009F96818E2065E00EDB1AF /* main.m in Sources */,
 			);
